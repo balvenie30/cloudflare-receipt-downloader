@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloudflare-receipt-downloader"
+dynamic = ["version"]
+description = "Download Cloudflare payment receipts (not invoices) as PDFs."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = ["pypdf>=4"]
+keywords = ["cloudflare", "receipts", "stripe", "billing", "bookkeeping", "invoices"]
+classifiers = [
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business :: Financial :: Accounting",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+cf-receipts = "cf_receipts.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/balvenie30/cloudflare-receipt-downloader"
+Issues = "https://github.com/balvenie30/cloudflare-receipt-downloader/issues"
+
+[tool.setuptools.dynamic]
+version = { attr = "cf_receipts.__version__" }
